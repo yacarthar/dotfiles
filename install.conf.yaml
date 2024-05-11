@@ -1,0 +1,33 @@
+# Settings
+- defaults:
+    link:
+      create: true  # create empty folder if neccessary
+      relink: true  # remove old target if it's symlink
+      force: true   # force remove old target
+
+# Clean dead symlinks
+- clean: ["~", "~/.config"]
+
+# Run shell commands
+- shell:
+    # Update submodules
+    - [git submodule update --init --recursive, Installing submodules]
+
+# Symlink files
+- link:
+    # Bash
+    ~/.bashrc: shells/bashrc
+    # Git
+    ~/.gitconfig: git/gitconfig
+    # ~/.gitignore: git/gitignore
+    # ~/.gitattributes: git/gitattributes
+
+    # Git template
+    #~/.git_template: git_template
+
+    # Vim
+    ~/.vimrc: vim/vimrc
+
+    # Tmux
+    # ~/.tmux.conf: tmux/tmux.conf
+

@@ -1,0 +1,26 @@
+syntax enable
+set number
+set nowrap
+
+" fold
+"set foldmethod=indent
+"set foldcolumn=2
+
+
+" tab
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+
+" VARIABLE
+let RC = '/home/ubuntu/.vimrc' " not working
+
+
+" PLUGINS
+packloadall " Load all plugins.
+silent! helptags ALL " load helpfile for all plugins
+
+" shortcut
+command! Bd :bp | :sp | :bn | :bd    " close buffer but keep window
+command! Tree NERDTree
