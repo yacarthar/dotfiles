@@ -1,6 +1,7 @@
 syntax enable
 set number
 set nowrap
+colo desert
 
 " fold
 "set foldmethod=indent
@@ -13,8 +14,6 @@ set shiftwidth=4
 set expandtab
 set autoindent
 
-" VARIABLE
-let RC = '/home/ubuntu/.vimrc' " not working
 
 
 " PLUGINS
