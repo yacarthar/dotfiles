@@ -32,6 +32,9 @@ function terminal_core {
   else
       echo "vim is already installed."
   fi
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
   # tmux
   if ! which tmux >/dev/null 2>&1; then
       echo "tmux is not installed. Installing..."
@@ -78,7 +81,7 @@ function docker {
 
   # Add Docker's official GPG key:
   sudo apt-get update
-  sudo apt-get install ca-certificates
+  sudo apt-get install -y ca-certificates
   sudo install -m 0755 -d /etc/apt/keyrings
   sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
   sudo chmod a+r /etc/apt/keyrings/docker.asc
