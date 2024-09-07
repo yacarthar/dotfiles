@@ -118,3 +118,10 @@ fi
 
 # my alias
 alias python='python3'
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+
+
+
+
+
+

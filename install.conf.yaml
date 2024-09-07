@@ -17,6 +17,8 @@
 - link:
     # Bash
     ~/.bashrc: shells/bashrc
+    # ripgrep
+    ~/.ripgreprc: shells/ripgreprc
     # Git
     ~/.gitconfig: git/gitconfig
     # ~/.gitignore: git/gitignore
