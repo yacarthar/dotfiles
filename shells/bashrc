@@ -120,7 +120,8 @@ fi
 alias python='python3'
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc
 
-
+# starship prompt
+eval "$(starship init bash)"
 
 
 

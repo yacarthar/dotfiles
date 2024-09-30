@@ -17,6 +17,8 @@
 - link:
     # Bash
     ~/.bashrc: shells/bashrc
+    ~/.config/starship.toml: shells/starship.toml
+
     # ripgrep
     ~/.config/ripgreprc: shells/ripgreprc
     # Git
