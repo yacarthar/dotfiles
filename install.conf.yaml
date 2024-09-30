@@ -29,7 +29,7 @@
 
     # Vim
     ~/.vim/vimrc: vim/vimrc
-
+    ~/.config/nvim: nvim/stable
     # Tmux
     # ~/.tmux.conf: tmux/tmux.conf
 
