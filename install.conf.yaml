@@ -18,6 +18,8 @@
     # Bash
     ~/.bashrc: shells/bashrc
     ~/.config/starship.toml: shells/starship.toml
+    ~/.config/user-dirs.dirs: shells/user-dirs.dirs
+    ~/.config/user-dirs.config: shells/user-dirs.conf
 
     # ripgrep
     ~/.config/ripgreprc: shells/ripgreprc
