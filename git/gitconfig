@@ -93,7 +93,7 @@
 	# attributesfile = ~/.gitattributes
 
   autoctrlf = false
-  editor = vim
+	editor = vim
   whitespace = warn
   sshCommand = "ssh -i ~/.ssh/yacarthar-git.ppk"
 
