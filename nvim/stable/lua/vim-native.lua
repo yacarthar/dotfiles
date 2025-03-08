@@ -31,4 +31,6 @@ vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<leader>ve', ':edit $MYVIMRC<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>vr', ':source $MYVIMRC<CR>', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap("n", "<C-e>", "4<C-e>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-y>", "4<C-y>", { noremap = true, silent = true })
 

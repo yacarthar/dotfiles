@@ -119,6 +119,7 @@ fi
 # my alias
 alias python='python3'
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc
+alias cdir='cd "$(dirname -- "$_")"'
 
 # starship prompt
 # eval "$(starship init bash)"
