@@ -120,6 +120,14 @@ fi
 alias python='python3'
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc
 alias cdir='cd "$(dirname -- "$_")"'
+<<<<<<< Updated upstream
+=======
+
+source <(kubectl completion bash)
+alias k='kubectl'
+complete -o default -F __start_kubectl k
+
+>>>>>>> Stashed changes
 
 # starship prompt
 # eval "$(starship init bash)"
