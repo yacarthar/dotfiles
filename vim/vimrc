@@ -14,24 +14,43 @@ set expandtab
 set autoindent
 
 
+set background=dark " or light
 
 " PLUGINS
 packloadall " Load all plugins.
 silent! helptags ALL " load helpfile for all plugins
 
-" shortcut
-command! Bd :bp | :sp | :bn | :bd    " close buffer but keep window
-command! Tree NERDTree
-
+" Important!!
+if has('termguicolors')
+  set termguicolors
+endif
 
 call plug#begin()
-
-" Plug 'flazz/vim-colorschemes'
+Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/edge'
 Plug 'sainnhe/sonokai'
 Plug 'vim-python/python-syntax'
 call plug#end()
 
+" edge 
+let g:edge_style = 'aura'
+let g:edge_better_performance = 1
+" gruvbox
+let g:gruvbox_material_background = 'soft' " Available values: 'hard', 'medium'(default), 'soft'
+let g:gruvbox_material_better_performance = 1
+
+" colorscheme gruvbox-material
+" colorscheme edge
 colo sonokai
 
 " Python
 let g:python_highlight_all = 1
+
+
+" shortcut
+command! Q quit
+
+inoremap <silent> jj <Esc>
+
+nnoremap <silent> <C-e> 4<C-e>
+nnoremap <silent> <C-y> 4<C-y>

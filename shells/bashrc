@@ -120,16 +120,16 @@ fi
 alias python='python3'
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc
 alias cdir='cd "$(dirname -- "$_")"'
-<<<<<<< Updated upstream
-=======
 
-source <(kubectl completion bash)
-alias k='kubectl'
-complete -o default -F __start_kubectl k
-
->>>>>>> Stashed changes
-
-# starship prompt
-# eval "$(starship init bash)"
+# Check if kubectl is installed
+if command -v kubectl &> /dev/null
+then
+  # Source kubectl completion for bash
+  source <(kubectl completion bash)
+  # Create an alias for kubectl
+  alias k='kubectl'
+  # Set up autocompletion for the alias
+  complete -o default -F __start_kubectl k
+fi
 
 
