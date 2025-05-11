@@ -40,8 +40,8 @@ else
     echo "Failed to install $VENV_PACKAGE."
 fi
 
-# ripgrep
-apt install -y ripgrep
+# essential tools
+apt install -y ripgrep fzf
 
 # install npm
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -

@@ -120,6 +120,8 @@ fi
 alias python='python3'
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc
 alias cdir='cd "$(dirname -- "$_")"'
+alias send="sudo cp $1 -t /mnt/win_share/"
+
 
 # Check if kubectl is installed
 if command -v kubectl &> /dev/null
