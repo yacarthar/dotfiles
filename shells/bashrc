@@ -121,8 +121,13 @@ alias python='python3'
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc
 alias cdir='cd "$(dirname -- "$_")"' # cd to folder of file in prev cmd
 alias send="sudo cp $1 -t /mnt/win_share/"
-alias clip="tmux load-buffer -"
-alias wz="tmux new-window -n 'Weather' 'curl -s wttr.in/~cau+giay && read -p \"Press enter to close...\"'"
+alias b="tmux load-buffer -"
+alias wz="tmux new-window -n 'Weather' 'curl -s wttr.in/~cau+giay && read -p \"Press enter to close...\"'" ;
+
+clip() {
+  base64 | tr -d '\n' | awk '{printf "\033]52;c;%s\a", $0}'
+};
+
 
 # Check if kubectl is installed
 if command -v kubectl &> /dev/null
