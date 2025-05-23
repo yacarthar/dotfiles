@@ -4,7 +4,7 @@ TTL_MINUTES=30
 
 # Get weather data with proper UTF-8 encoding
 get_weather() {
-    curl -s 'wttr.in/~cau+giay?format=%t' \
+    curl -s 'wttr.in/hanoi?format=%t' \
     | sed -e 's/ //g' -e 's/+//g'
 }
 
