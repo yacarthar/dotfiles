@@ -128,26 +128,6 @@ clip() {
   base64 | tr -d '\n' | awk '{printf "\033]52;c;%s\a", $0}'
 };
 
-hwusg() {
-    # Check if not inside tmux
-    if [ -z "$TMUX" ]; then
-        echo "Not inside tmux. Exiting."
-        return
-    fi
-
-    # Create new window named 'monitor'
-    tmux new-window -n monitor
-
-    # Split window into left/right
-    #tmux split-window -h
-
-    # Send commands to each pane
-    # tmux select-pane -t 0
-    tmux send-keys "btop" C-m
-
-    # tmux select-pane -t 1
-    # tmux send-keys "curl -s ipinfo.io" C-m
-}
 
 # Check if kubectl is installed
 if command -v kubectl &> /dev/null
