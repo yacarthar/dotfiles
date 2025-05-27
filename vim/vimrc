@@ -52,7 +52,31 @@ let g:python_highlight_all = 1
 " shortcut
 command! Q quit
 
+let mapleader = ","
+
 inoremap <silent> jj <Esc>
 
 nnoremap <silent> <C-e> 4<C-e>
 nnoremap <silent> <C-y> 4<C-y>
+
+" Map <leader>y in visual mode to copy via OSC 52
+xnoremap <silent> <leader>y :<C-u>call CopyOSC52()<CR>
+
+function! CopyOSC52()
+  " Yank visually selected text to the unnamed register
+  normal! ""y
+
+  " Get the yanked text
+  let l:text = getreg('"')
+  let l:text_escaped = shellescape(l:text, 1)
+  let l:base64_part = '$(echo ' . l:text_escaped . ' | base64 | tr -d "\n")'
+  let l:osc52_prefix = "printf '\033]52;c;"
+  let l:osc52_suffix = "\a'"
+  let l:cmd = l:osc52_prefix . l:base64_part . l:osc52_suffix
+  echom l:cmd 
+" call system(l:cmd)
+
+endfunction
+
+
+
