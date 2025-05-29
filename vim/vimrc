@@ -36,6 +36,7 @@ Plug 'vim-python/python-syntax'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " edge
@@ -58,7 +59,7 @@ let g:airline_section_c = '%{ShortenPath(expand("%:p:h"), 4)}/%t'
 " shortcut
 command! Q quit
 
-
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 
 
@@ -96,6 +97,10 @@ function! ShortenPath(path, depth)
   return '../' . join(parts[(total_len - a:depth):], '/')
 endfunction
 
-
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 
