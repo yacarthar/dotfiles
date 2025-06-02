@@ -146,5 +146,14 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>F  <Plug>(coc-format-selected)
+nmap <leader>F  <Plug>(coc-format-selected)
+
+"nnoremap <Leader>f :call CocAction('format')<CR>
+nnoremap <Leader>f <Plug>(coc-format)
+"inoremap <Leader>f <Esc>:call CocAction('format')<CR>gi
+inoremap <Leader>f <Plug>(coc-format) 
+
+
+
+
