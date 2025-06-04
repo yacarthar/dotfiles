@@ -72,8 +72,9 @@ let mapleader = ","
 inoremap <silent> jj <Esc>
 
 nnoremap <F5> :set spell!<CR>
-nnoremap <silent> <C-e> 4<C-e>
-nnoremap <silent> <C-y> 4<C-y>
+nnoremap <silent> <C-Down> 4<C-e>
+nnoremap <silent> <C-Up>   4<C-y>
+
 
 " Map <leader>y in visual mode to copy via OSC 52
 xnoremap <silent> <leader>y :<C-u>call CopyOSC52()<CR>
@@ -148,12 +149,24 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code
 xmap <leader>F  <Plug>(coc-format-selected)
 nmap <leader>F  <Plug>(coc-format-selected)
-
-"nnoremap <Leader>f :call CocAction('format')<CR>
 nnoremap <Leader>f <Plug>(coc-format)
-"inoremap <Leader>f <Esc>:call CocAction('format')<CR>gi
-inoremap <Leader>f <Plug>(coc-format) 
 
 
+" Show all diagnostics
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 

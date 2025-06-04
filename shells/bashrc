@@ -116,6 +116,15 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# my PATH
+if [ -d "$HOME/.npm-global/bin" ] && [[ ":$PATH:" != *":$HOME/.npm-global/bin:"* ]]; then
+    PATH="$HOME/.npm-global/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ] && [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 # my alias
 alias python='python3'
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc

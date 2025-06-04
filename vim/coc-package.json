@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "coc-json": ">=1.9.3",
-    "coc-pyright": ">=1.1.400",
-    "coc-sh": ">=1.2.4"
-  }
+    "coc-sh": ">=1.2.4",
+    "coc-pyright": ">=1.1.400"
+  },
+  "lastUpdate": 1748834371948
 }
