@@ -1,7 +1,12 @@
 {
     "suggest.noselect": true,
+    "suggest.autoTrigger": "none",
     "pyright.inlayHints.variableTypes": false,
     "pyright.inlayHints.parameterTypes": false,
     "pyright.inlayHints.functionReturnTypes": false,
-    "python.formatting.autopep8Args": ["--aggressive", "--aggressive"]
+    "python.formatting.autopep8Args": ["--aggressive", "--aggressive"],
+    "list.normalMappings": {
+        "<C-j>": "do:next",
+        "<C-k>": "do:previous"
+    }
 }

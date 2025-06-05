@@ -72,8 +72,8 @@ let mapleader = ","
 inoremap <silent> jj <Esc>
 
 nnoremap <F5> :set spell!<CR>
-nnoremap <silent> <C-Down> 4<C-e>
-nnoremap <silent> <C-Up>   4<C-y>
+nnoremap <silent> <C-Down> 7<C-e>
+nnoremap <silent> <C-Up>   7<C-y>
 
 
 " Map <leader>y in visual mode to copy via OSC 52
@@ -118,10 +118,12 @@ function! CheckBackspace() abort
 endfunction
 
 
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-nmap <silent><nowait> [g <Plug>(coc-diagnostic-prev)
-nmap <silent><nowait> ]g <Plug>(coc-diagnostic-next)
+" diagnostic key binding
+nmap <silent> <leader>d <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>D <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>e <Plug>(coc-diagnostic-next-error)
+nmap <silent> <leader>E <Plug>(coc-diagnostic-prev-error
+
 
 " GoTo code navigation
 nmap <silent><nowait> gd <Plug>(coc-definition)
@@ -153,7 +155,7 @@ nnoremap <Leader>f <Plug>(coc-format)
 
 
 " Show all diagnostics
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>a  :<C-u>CocList --no-quit diagnostics<cr>
 " Manage extensions
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
@@ -168,5 +170,15 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+
+
+
+" ================== auto cmd ================================
+" Delete all trailing space when saving file
+autocmd BufWritePre * :%s/\s\+$//e
+
+
 
 
