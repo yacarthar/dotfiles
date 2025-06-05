@@ -75,25 +75,17 @@ nnoremap <F5> :set spell!<CR>
 nnoremap <silent> <C-Down> 7<C-e>
 nnoremap <silent> <C-Up>   7<C-y>
 
-
-" Map <leader>y in visual mode to copy via OSC 52
-xnoremap <silent> <leader>y :<C-u>call CopyOSC52()<CR>
-
-function! CopyOSC52()
-  " Yank visually selected text to the unnamed register
-  normal! ""y
-
-  " Get the yanked text
-  let l:text = getreg('"')
-  let l:text_escaped = shellescape(l:text, 1)
-  let l:base64_part = '$(echo ' . l:text_escaped . ' | base64 | tr -d "\n")'
-  let l:osc52_prefix = "printf '\033]52;c;"
-  let l:osc52_suffix = "\a'"
-  let l:cmd = l:osc52_prefix . l:base64_part . l:osc52_suffix
-  echom l:cmd
-" call system(l:cmd)
+" yank to tmux buffer
+function! CopyToTmuxBuffer()
+  normal! gv"zy
+  let l:text = getreg('z')
+  call system('tmux load-buffer -', l:text)
+  silent! echo "Yanked to register z"
 endfunction
+xnoremap  <leader>y :<C-u>call CopyToTmuxBuffer()<CR>
 
+
+" for Airline display file path
 function! ShortenPath(path, depth)
   let parts = split(a:path, '/')
   let total_len = len(parts)
