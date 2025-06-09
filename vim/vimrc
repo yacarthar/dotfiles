@@ -1,8 +1,12 @@
 syntax enable
 set number
 set nowrap
+" Vim need this to calculate non-english sequence
 set encoding=utf-8
+" Affects how quickly you see errors as you type
+" Language servers receive updates faster
 set updatetime=300
+" error-icon won't shift text
 set signcolumn=yes
 set pastetoggle=<F2>
 " set paste
@@ -60,10 +64,6 @@ let g:airline_theme='tomorrow'
 let g:airline_section_c = '%{ShortenPath(expand("%:p:h"), 4)}/%t'
 " shortcut
 command! Q quit
-
-autocmd FileType json syntax match Comment +\/\/.\+$+
-
-
 
 
 " ================== keys mapping =================
@@ -163,13 +163,15 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-
-
-
+" open tag in new vertical split
+nnoremap <Leader>h :vsplit \| wincmd L \| execute 'help ' . expand('<cword>')<CR>
 
 " ================== auto cmd ================================
 " Delete all trailing space when saving file
 autocmd BufWritePre * :%s/\s\+$//e
+
+" allow comment in json file
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 
 
