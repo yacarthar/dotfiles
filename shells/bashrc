@@ -128,6 +128,8 @@ fi
 # my alias
 alias python='python3'
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc
+export TZ="Asia/Ho_Chi_Minh"
+export EDITOR=vim
 alias cdir='cd "$(dirname -- "$_")"' # cd to folder of file in prev cmd
 alias send="sudo cp $1 -t /mnt/win_share/"
 alias b="tmux load-buffer -"
