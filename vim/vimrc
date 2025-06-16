@@ -1,6 +1,7 @@
 syntax enable
 set number
 set nowrap
+:set ruler
 " Vim need this to calculate non-english sequence
 set encoding=utf-8
 " Affects how quickly you see errors as you type
@@ -8,7 +9,7 @@ set encoding=utf-8
 set updatetime=300
 " error-icon won't shift text
 set signcolumn=yes
-set pastetoggle=<F2>
+set pastetoggle=<F8>
 " set paste
 " fold
 "set foldmethod=indent
@@ -24,6 +25,9 @@ set expandtab
 " set spelllang=en
 set background=dark " or light
 
+set hlsearch
+"set incsearch
+"set ignorecase
 
 " Important!!
 if has('termguicolors')
@@ -71,9 +75,40 @@ let mapleader = ","
 
 inoremap <silent> jj <Esc>
 
+nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F5> :set spell!<CR>
+
 nnoremap <silent> <C-Down> 7<C-e>
 nnoremap <silent> <C-Up>   7<C-y>
+
+function! JumpToNextWordChar()
+  let l:line_num = line('.')
+  let l:col = col('.')
+  let l:last_line = line('$')
+
+  while l:line_num <= l:last_line
+    let l:line = getline(l:line_num)
+    let l:len = len(l:line)
+
+    while l:col < l:len
+      let l:char = l:line[l:col - 1]
+      let l:next = l:line[l:col]
+      if l:char =~ '[^a-zA-Z0-9]' && l:next =~ '[a-zA-Z0-9]'
+        call cursor(l:line_num, l:col + 1)
+        return
+      endif
+      let l:col += 1
+    endwhile
+
+    " Sang dòng tiếp theo, bắt đầu từ cột 1
+    let l:line_num += 1
+    let l:col = 1
+  endwhile
+
+  echo "Not found"
+endfunction
+
+nnoremap <silent> w :call JumpToNextWordChar()<CR>
 
 " yank to tmux buffer
 function! CopyToTmuxBuffer()
