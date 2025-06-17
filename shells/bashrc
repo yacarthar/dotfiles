@@ -152,9 +152,16 @@ then
 fi
 
 # key binding
-bind '"\ek": previous-history'   # Alt+k (↑)
-bind '"\ej": next-history'      # Alt+j (↓)
+stty -ixon
+stty -ixoff
 
+bind '"\ew": previous-history'  # Alt+w
+bind '"\ec": next-history'      # Alt+c
 
+bind '"\C-s": backward-word'        # Ctrl+S = like alt-b
+bind '"\C-f": forward-word'         # Ctrl+F = Forward one word (like Alt+F)
+bind '"\C-q": kill-word'            # Ctrl+X = Delete to end of word (like Alt+D)
+
+bind '"\C-/": undo'
 
 
