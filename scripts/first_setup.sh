@@ -15,12 +15,12 @@ mv ~/ds/yacarthar-git.pem ~/.ssh/yacarthar-git.pem
 chmod 600 ~/.ssh/yacarthar-git.pem
 
 # dotfiles
-git clone --config core.sshCommand="ssh -i ~/.ssh/yacarthar-git.pem" git@github.com:yacarthar/dotfiles.git ~/Desktop/dotfiles
-cd ~/Desktop/dotfiles
+git clone --config core.sshCommand="ssh -i ~/.ssh/yacarthar-git.pem" git@github.com:yacarthar/dotfiles.git ~/ds/dotfiles
+cd ~/ds/dotfiles
 chmod 775 ./install
-sudo ./install
+./install
 
-
+# can access dropbox but can't access github
 
 
 

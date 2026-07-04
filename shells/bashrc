@@ -165,3 +165,4 @@ bind '"\C-q": kill-word'            # Ctrl+X = Delete to end of word (like Alt+D
 bind '"\C-/": undo'
 
 
+alias get_theme='bash -c "$(wget -qO- https://git.io/vQgMr)"'

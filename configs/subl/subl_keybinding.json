@@ -1,0 +1,23 @@
+[
+
+    { "keys": ["ctrl+alt+up"], "command": "select_lines", "args": {"forward": false} },
+    { "keys": ["ctrl+alt+down"], "command": "select_lines", "args": {"forward": true} },
+    {
+        "keys": ["ctrl+shift+o"],
+        "command": "prompt_open_folder"
+    },
+    { 
+        "keys": ["alt+`"], "command": "toggle_terminus_panel"
+    },
+
+    { 
+        "keys": ["ctrl+alt+t"], "command": "terminus_open", "args": {
+            "cwd": "${file_path:${folder}}"
+        }
+    },
+    {
+        "keys": ["f2"],
+        "command": "open_dir",
+        "args": { "dir": "$working_dir" }
+    }
+]

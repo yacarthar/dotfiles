@@ -33,6 +33,7 @@ prompt_install "Sublime Text" && install_sublime=true || install_sublime=false
 prompt_install "Sublime Merge" && install_merge=true || install_merge=false
 prompt_install "IBus" && install_ibus=true || install_ibus=false
 prompt_install "OneDrive (openSUSE Repo)" && install_onedrive=true || install_onedrive=false
+prompt_install "Zoom" && install_zoom=true || install_zoom=false
 
 echo -e "\n=================================================="
 echo "          Executing Installation Steps            "
@@ -49,9 +50,10 @@ if [ "$install_chrome" = true ]; then
         echo "[Already Installed] Google Chrome is already on this system."
     else
         echo "Installing Google Chrome..."
-        wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        apt install -y ./google-chrome-stable_current_amd64.deb
-        rm ./google-chrome-stable_current_amd64.deb
+        wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+            -O /tmp/google-chrome-stable_current_amd64.deb
+        apt install -y /tmp/google-chrome-stable_current_amd64.deb
+        rm /tmp/google-chrome-stable_current_amd64.deb
         echo "[Success] Google Chrome installed."
     fi
 else
@@ -159,6 +161,24 @@ if [ "$install_onedrive" = true ]; then
     fi
 else
     echo "OneDrive... [Skipped]"
+fi
+
+
+# install_zoom
+# --- 6. Zoom ------
+if [ "$install_zoom" = true ]; then
+    echo "Processing Zoom..."
+    if command -v zoom &> /dev/null; then
+        echo "[Already Installed] Zoom is already on this system."
+    else
+        echo "Installing Zoom..."
+        wget -q https://zoom.us/client/latest/zoom_amd64.deb -O /tmp/zoom_amd64.deb
+        apt install -y /tmp/zoom_amd64.deb
+        rm -f /tmp/zoom_amd64.deb
+        echo "[Success] Zoom installed."
+    fi
+else
+    echo "Zoom... [Skipped]"
 fi
 
 echo "=================================================="

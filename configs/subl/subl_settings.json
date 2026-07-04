@@ -1,0 +1,18 @@
+{
+    "allow_git_home_dir": true,
+    "color_scheme": "Mariana.sublime-color-scheme",
+    "font_size": 12,
+    "ignored_packages":
+    [
+        "Vintage",
+    ],
+    "show_git_status": true,
+    "theme": "Default.sublime-theme",
+    "vintageous_use_ctrl_keys": false,
+    "index_files": true,
+    "tab_completion": true,
+    "auto_complete_commit_on_tab": true,
+    "preview_on_click": false,
+    "rulers": [80],
+    "word_wrap": false
+}
