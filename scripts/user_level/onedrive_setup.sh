@@ -18,6 +18,7 @@ echo "Configuring sync_list filter rules..."
 echo "/away" >> ~/.config/onedrive/sync_list
 
 echo "Configuring sync_dir ..."
+echo "threads = \"4\"" >> ~/.config/onedrive/config
 echo "sync_dir = \"~/onedrive\"" >> ~/.config/onedrive/config
 
 # --------------------------------------------------
@@ -36,11 +37,12 @@ onedrive
 
 echo "--------------------------------------------------"
 echo "Step B: Executing Simulation (Dry-Run)..."
-onedrive --synchronize --dry-run
+onedrive --sync --dry-run
 
 # echo "--------------------------------------------------"
 # echo "Step C: Running Initial Production Sync..."
-# onedrive --synchronize
+# onedrive --sync
+# onedrive --resync
 
 echo "=================================================="
 echo "OneDrive installation and initialization complete."

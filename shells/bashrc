@@ -7,6 +7,7 @@ case $- in
     *i*) ;;
       *) return;;
 esac
+echo "bashrc loaded!"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -117,12 +118,13 @@ if ! shopt -oq posix; then
 fi
 
 # my PATH
+PATH="$(printf '%s' "$PATH" | sed 's#:/usr/games##; s#:/usr/local/games##; s#:/snap/bin##')"
 if [ -d "$HOME/.npm-global/bin" ] && [[ ":$PATH:" != *":$HOME/.npm-global/bin:"* ]]; then
-    PATH="$HOME/.npm-global/bin:$PATH"
+    export PATH="$HOME/.npm-global/bin:$PATH"
 fi
 
 if [ -d "$HOME/.local/bin" ] && [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
-    PATH="$HOME/.local/bin:$PATH"
+    export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # my alias
@@ -161,7 +163,7 @@ bind '"\ec": next-history'      # Alt+c
 bind '"\C-s": backward-word'        # Ctrl+S = like alt-b
 bind '"\C-f": forward-word'         # Ctrl+F = Forward one word (like Alt+F)
 bind '"\C-q": kill-word'            # Ctrl+X = Delete to end of word (like Alt+D)
-
+bind '"\C-h": backward-kill-word'
 bind '"\C-/": undo'
 
 
