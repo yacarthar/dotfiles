@@ -17,11 +17,11 @@
 - link:
     # Bash
     ~/.bashrc: shells/bashrc
-    ~/.config/user-dirs.dirs: shells/user-dirs.dirs
-    ~/.config/user-dirs.config: shells/user-dirs.conf
+    ~/.config/user-dirs.dirs: configs/user-dirs.dirs
+    ~/.config/user-dirs.config: configs/user-dirs.conf
 
     # ripgrep
-    ~/.config/ripgreprc: shells/ripgreprc
+    ~/.config/ripgreprc: configs/ripgreprc
     # Git
     ~/.gitconfig: git/gitconfig
     # ~/.gitignore: git/gitignore

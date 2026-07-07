@@ -7,14 +7,17 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+    "remove_trailing_whitespace_on_save": true,
+    "ensure_final_newline_on_save": false,
+    "format_on_save": "off",
     "tab_size": 4,
     "project_panel": {
-        "dock": "left"
+        "dock": "left",
     },
     "telemetry": {
         "diagnostics": true,
         "metrics": false,
-        "anthropic_retention": false
+        "anthropic_retention": false,
     },
     "base_keymap": "SublimeText",
     "ui_font_size": 16,
@@ -22,6 +25,6 @@
     "theme": {
         "mode": "dark",
         "light": "Gruvbox Light Soft",
-        "dark": "One Dark"
-    }
+        "dark": "One Dark",
+    },
 }
