@@ -13,9 +13,10 @@ fi
 # --------------------------------------------------
 echo "Generating local configuration directories..."
 mkdir -p ~/.config/onedrive
+mkdir -p ~/onedrive
 
 echo "Configuring sync_list filter rules..."
-echo "/away" >> ~/.config/onedrive/sync_list
+echo "/document/away" >> ~/.config/onedrive/sync_list
 
 echo "Configuring sync_dir ..."
 echo "threads = \"4\"" >> ~/.config/onedrive/config

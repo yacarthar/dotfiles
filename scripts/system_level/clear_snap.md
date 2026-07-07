@@ -20,7 +20,7 @@ sudo snap remove --purge core22
 sudo snap remove --purge core20
 sudo snap remove --purge core18
 
-
+sudo systemctl disable --now unattended-upgrades.service
 sudo apt-get purge -y snapd
 sudo apt-get autoremove -y
 
