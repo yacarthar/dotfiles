@@ -7,6 +7,18 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+    "centered_layout": {
+        "right_padding": 0.25,
+        "left_padding": 0.25
+    },
+    "title_bar": {
+        "show_sign_in": false,
+        "show_onboarding_banner": true,
+        "show_project_items": true,
+        "show_menus": true,
+        "show_branch_status_icon": true
+    },
+    "cli_default_open_behavior": "existing_window",
     "remove_trailing_whitespace_on_save": true,
     "ensure_final_newline_on_save": false,
     "format_on_save": "off",
@@ -27,4 +39,5 @@
         "light": "Gruvbox Light Soft",
         "dark": "One Dark",
     },
+    "soft_wrap": "none"
 }
