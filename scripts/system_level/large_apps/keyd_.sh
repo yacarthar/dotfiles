@@ -12,7 +12,7 @@ sudo tee /etc/keyd/default.conf >/dev/null <<'EOF'
 *
 
 [main]
-capslock = right
+capslock = leftmeta
 EOF
 
 sudo systemctl enable --now keyd

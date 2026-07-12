@@ -38,7 +38,5 @@ grep -qxF 'exec fcitx5 -d' "$HOME/.config/sway/config" || \
 
 echo
 echo "Installation completed."
-echo "Sway will now exit. Please log in again."
+echo "Please log in again to activate fcitx5"
 
-sleep 2
-swaymsg exit
