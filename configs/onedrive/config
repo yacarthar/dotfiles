@@ -1,0 +1,5 @@
+threads = "4"
+sync_dir = "~/onedrive"
+skip_symlinks = "true"
+skip_file = "~*|*.tmp|*.swp|*.swo|*safeBackup*"
+

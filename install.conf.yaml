@@ -43,3 +43,9 @@
     ~/.config/sublime-text/Packages/User/Default (Linux).sublime-keymap: configs/subl/subl_keybinding.json
     # Zed editor
     ~/.config/zed/settings.json: configs/zed/settings.json
+    # fcitx5
+    ~/.config/fcitx5/profile: configs/fcitx5/profile
+    ~/.config/fcitx5/config: configs/fcitx5/config
+    # onedrive
+    ~/.config/onedrive/config: configs/onedrive/config
+    ~/.config/onedrive/sync_list: configs/onedrive/sync_list
