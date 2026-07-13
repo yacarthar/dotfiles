@@ -49,3 +49,7 @@
     # onedrive
     ~/.config/onedrive/config: configs/onedrive/config
     ~/.config/onedrive/sync_list: configs/onedrive/sync_list
+    # sway
+    ~/.config/sway: configs/sway
+
+
