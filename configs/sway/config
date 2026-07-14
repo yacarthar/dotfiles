@@ -62,16 +62,15 @@ exec swayidle -w \
 #
     # Start a terminal
     bindsym $mod+r exec $term
-
     # Start file explorer
     bindsym $mod+e exec $explorer
+    # Start your launcher
+    bindsym $mod+m exec $menu
+    # Start chrome
+    bindsym $mod+g exec google-chrome-stable
 
     # Kill focused window
     bindsym $mod+c kill
-
-    # Start your launcher
-    bindsym $mod+b exec $menu
-
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -109,8 +108,8 @@ exec swayidle -w \
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
     # cycle focus
-    bindsym $alt+Tab focus next
-    bindsym $alt+Shift+Tab focus prev
+    bindsym $alt+Tab exec $scripts/focus_window.sh next
+    bindsym $alt+Shift+Tab exec $scripts/focus_window.sh prev
 #
 # Workspaces:
 #
@@ -147,8 +146,8 @@ exec swayidle -w \
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+Shift+v splitv
-    bindsym $mod+v splith
+    bindsym $mod+Shift+v splith
+    bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+bar layout toggle split
@@ -235,8 +234,8 @@ bindsym $mod+i mode "resize"
 include /etc/sway/config.d/*
 
 # Startup applications
-# exec waybar
-exec_always pkill waybar; waybar
+
+exec_always sh -c 'pkill -x waybar 2>/dev/null; waybar'
 exec_always swaybg -i ~/Pictures/wallpapers/jade-dragon.jpg -m fit
 exec fcitx5 -d
 
