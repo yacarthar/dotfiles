@@ -61,13 +61,15 @@ exec swayidle -w \
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+r exec $term
+    bindsym $mod+t exec $term
     # Start file explorer
     bindsym $mod+e exec $explorer
     # Start your launcher
-    bindsym $mod+m exec $menu
+    bindsym $mod+r exec $menu
     # Start chrome
     bindsym $mod+g exec google-chrome-stable
+    # Start zed
+    bindsym $mod+d exec zed
 
     # Kill focused window
     bindsym $mod+c kill
