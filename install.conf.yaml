@@ -51,5 +51,9 @@
     ~/.config/onedrive/sync_list: configs/onedrive/sync_list
     # sway
     ~/.config/sway: configs/sway
+    # waybar
+    ~/.config/waybar: configs/waybar
+    # mako notification
+    ~/.config/mako: configs/mako
 
 
