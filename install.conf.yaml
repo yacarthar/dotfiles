@@ -19,6 +19,7 @@
     ~/.bashrc: shells/bashrc
     ~/.config/user-dirs.dirs: configs/user-dirs.dirs
     ~/.config/user-dirs.config: configs/user-dirs.conf
+    ~/.local/bin/clip: shells/clip
 
     # ripgrep
     ~/.config/ripgreprc: configs/ripgreprc

@@ -58,8 +58,8 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    # PS1='${debian_chroot:+($debian_chroot)}\[\e[01;32m\]\u@\h\[\e[00m\]:\[\e[01;34m\]\w\[\e[00m\]\$ '
-    PS1='\[\e[34m\]\u@\h\[\e[32m\]:\w\[\e[0m\]\n\$ '
+    PS1='\[\e[32m\]\u@\h\[\e[00m\]:\[\e[34m\]\w\[\e[00m\]\$ '
+    # PS1='\[\e[34m\]\u@\h\[\e[32m\]:\w\[\e[0m\]\n\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -98,11 +98,6 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -132,7 +127,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init - bash)"
 
+
+#========================================================================
 # my alias
+#
 alias python='python3'
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc
 export TZ="Asia/Ho_Chi_Minh"
@@ -141,23 +139,24 @@ export EDITOR=vim
 
 alias b="tmux load-buffer -"
 alias wz="tmux new-window -n 'Weather' 'curl -s wttr.in/~cau+giay && read -p \"Press enter to close...\"'" ;
+# back to git folder
+alias cgit='cd "$(git rev-parse --show-toplevel)"'
+# ghostty doesn't need this
+alias get_theme='bash -c "$(wget -qO- https://git.io/vQgMr)"'
 
-clip() {
-  base64 | tr -d '\n' | awk '{printf "\033]52;c;%s\a", $0}'
-};
 
-# Check if kubectl is installed
+# k for kubectl
 if command -v kubectl &> /dev/null
 then
-  # Source kubectl completion for bash
   source <(kubectl completion bash)
-  # Create an alias for kubectl
   alias k='kubectl'
-  # Set up autocompletion for the alias
+  # autocompletion
   complete -o default -F __start_kubectl k
 fi
 
+#========================================================================
 # key binding
+#
 stty -ixon
 stty -ixoff
 
@@ -169,6 +168,5 @@ bind '"\C-f": forward-word'         # Ctrl+F = Forward one word (like Alt+F)
 bind '"\C-q": kill-word'            # Ctrl+X = Delete to end of word (like Alt+D)
 bind '"\C-h": backward-kill-word'
 bind '"\C-/": undo'
+bind -x '"\e[15;5~":"source ~/.bashrc"'
 
-
-alias get_theme='bash -c "$(wget -qO- https://git.io/vQgMr)"'
