@@ -48,6 +48,10 @@ fi
 
 export PATH="/usr/local/go/bin:$PATH"
 
+go version
+
+exit 0
+
 ###############################################################################
 # Install Go tools
 ###############################################################################
@@ -92,9 +96,6 @@ sudo mv /tmp/kind /usr/local/bin/
 
 echo
 echo "========== Versions =========="
-
-go version
-echo
 
 gopls version
 echo

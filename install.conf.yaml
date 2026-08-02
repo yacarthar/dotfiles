@@ -35,7 +35,8 @@
     ~/.vim/vimrc: vim/vimrc
     ~/.vim/coc-settings.json: vim/coc-settings.json
     ~/.config/coc/extensions/package.json: vim/coc-package.json
-    ~/.config/nvim: nvim/stable
+    ~/.vim/coc_stuff.vim: vim/coc_stuff.vim
+    #~/.config/nvim: nvim/stable
     # Tmux
     ~/.config/tmux: tmux
 

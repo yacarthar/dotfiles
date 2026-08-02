@@ -27,50 +27,21 @@ set background=dark " or light
 
 set hlsearch
 "set incsearch
-"set ignorecase
+set ignorecase  " search now ignore case
+set smartcase   " case-sensitive if pattern have caps
 
 " Important!!
 if has('termguicolors')
   set termguicolors
 endif
 
-
-
-
-"================= Plugins & settings==============
-call plug#begin()
-Plug 'sainnhe/gruvbox-material'
-Plug 'sainnhe/edge'
-Plug 'sainnhe/sonokai'
-Plug 'vim-python/python-syntax'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'preservim/nerdtree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call plug#end()
-
-" edge
-let g:edge_style = 'aura'
-let g:edge_better_performance = 1
-" gruvbox
-let g:gruvbox_material_background = 'soft' " Available values: 'hard', 'medium'(default), 'soft'
-let g:gruvbox_material_better_performance = 1
-
-" colorscheme gruvbox-material
-colo sonokai
-
-" Python
-let g:python_highlight_all = 1
-
-" airline
-let g:airline_theme='tomorrow'
-" let g:airline_section_c = '%f [%{getcwd()}]'
-let g:airline_section_c = '%{ShortenPath(expand("%:p:h"), 4)}/%t'
 " shortcut
 command! Q quit
 
 
-" ================== keys mapping =================
+" ==============================================
+" KEYS MAPPING
+"
 let mapleader = ","
 
 inoremap <silent> jj <Esc>
@@ -80,36 +51,16 @@ nnoremap <F5> :set spell!<CR>
 
 nnoremap <silent> <C-Down> 7<C-e>
 nnoremap <silent> <C-Up>   7<C-y>
+nnoremap <Esc> :nohlsearch<CR> " clear search highlight
 
-function! JumpToNextWordChar()
-  let l:line_num = line('.')
-  let l:col = col('.')
-  let l:last_line = line('$')
+" this plug is so cool
+vmap <C-c> <Plug>(YankOSC52)
 
-  while l:line_num <= l:last_line
-    let l:line = getline(l:line_num)
-    let l:len = len(l:line)
 
-    while l:col < l:len
-      let l:char = l:line[l:col - 1]
-      let l:next = l:line[l:col]
-      if l:char =~ '[^a-zA-Z0-9]' && l:next =~ '[a-zA-Z0-9]'
-        call cursor(l:line_num, l:col + 1)
-        return
-      endif
-      let l:col += 1
-    endwhile
 
-    " Sang dòng tiếp theo, bắt đầu từ cột 1
-    let l:line_num += 1
-    let l:col = 1
-  endwhile
 
-  echo "Not found"
-endfunction
-
-nnoremap <silent> w :call JumpToNextWordChar()<CR>
-
+" ================================================
+" TMUX
 " yank to tmux buffer
 function! CopyToTmuxBuffer()
   normal! gv"zy
@@ -120,6 +71,40 @@ endfunction
 xnoremap  <leader>y :<C-u>call CopyToTmuxBuffer()<CR>
 
 
+"================================================
+" PLUGINS & SETTINGS
+"
+call plug#begin()
+Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/edge'
+Plug 'sainnhe/sonokai'
+Plug 'vim-python/python-syntax'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/nerdtree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'kuntau/vim-osc52'
+call plug#end()
+
+
+"==================================================
+" COLORSCHEME
+"
+let g:edge_style = 'aura'
+let g:edge_better_performance = 1
+" gruvbox
+let g:gruvbox_material_background = 'soft' " Available values: 'hard', 'medium'(default), 'soft'
+let g:gruvbox_material_better_performance = 1
+
+" colorscheme gruvbox-material
+colo sonokai
+
+
+"===============================================
+" AIRLINE
+"
+let g:airline_theme='tomorrow'
+" let g:airline_section_c = '%f [%{getcwd()}]'
 " for Airline display file path
 function! ShortenPath(path, depth)
   let parts = split(a:path, '/')
@@ -127,87 +112,19 @@ function! ShortenPath(path, depth)
   return '../' . join(parts[(total_len - a:depth):], '/')
 endfunction
 
-
-" allow tab to select
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" allow enter
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+let g:airline_section_c = '%{ShortenPath(expand("%:p:h"), 4)}/%t'
 
 
-" diagnostic key binding
-nmap <silent> <leader>d <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>D <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>e <Plug>(coc-diagnostic-next-error)
-nmap <silent> <leader>E <Plug>(coc-diagnostic-prev-error
-
-
-" GoTo code navigation
-nmap <silent><nowait> gd <Plug>(coc-definition)
-nmap <silent><nowait> gy <Plug>(coc-type-definition)
-nmap <silent><nowait> gi <Plug>(coc-implementation)
-nmap <silent><nowait> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code
-xmap <leader>F  <Plug>(coc-format-selected)
-nmap <leader>F  <Plug>(coc-format-selected)
-nnoremap <Leader>f <Plug>(coc-format)
-
-
-" Show all diagnostics
-nnoremap <silent><nowait> <space>a  :<C-u>CocList --no-quit diagnostics<cr>
-" Manage extensions
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-" open tag in new vertical split
-nnoremap <Leader>h :vsplit \| wincmd L \| execute 'help ' . expand('<cword>')<CR>
-
-" ================== auto cmd ================================
+" =================================================
+" AUTO CMD
 " Delete all trailing space when saving file
 autocmd BufWritePre * :%s/\s\+$//e
-
 " allow comment in json file
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 
+" Python
+let g:python_highlight_all = 1
 
+source ~/.vim/coc_stuff.vim
 
