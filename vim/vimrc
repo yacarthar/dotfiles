@@ -56,7 +56,8 @@ nnoremap <Esc> :nohlsearch<CR> " clear search highlight
 " this plug is so cool
 vmap <C-c> <Plug>(YankOSC52)
 
-
+nnoremap <Tab> :bn<CR>
+nnoremap <S-Tab> :bp<CR>
 
 
 " ================================================
